@@ -14,13 +14,13 @@ int main()
 {
 	PrintIntro();
 	
-	
-	
-	GetGuessPrintBack();
-
-	GetGuessPrintBack();
-
-	GetGuessPrintBack();
+	// loop for the number of turns asking for guesses
+	constexpr int NUMBER_OF_TURNS = 5;
+	for (int count = 1; count <= NUMBER_OF_TURNS; count++)
+	{
+		GetGuessPrintBack();
+		cout << endl;
+	}
 	
 	cout << endl;
 
