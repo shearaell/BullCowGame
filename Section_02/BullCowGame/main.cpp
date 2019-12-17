@@ -7,6 +7,7 @@ using namespace std;
 void PrintIntro();
 void PlayGame();
 string GetGuessPrintBack();
+bool AskToPlayAgain();
 
 
 
@@ -16,6 +17,7 @@ int main()
 	PrintIntro();
 	
 	PlayGame();
+	cout << AskToPlayAgain();
 	
 	cout << endl;
 
@@ -56,4 +58,13 @@ string GetGuessPrintBack()
 	getline(cin, Guess);
 
 	return Guess;
+}
+
+bool AskToPlayAgain()
+{
+	cout << "Do you want to play again? ";
+	string Response = "";
+		getline(cin, Response);
+		return (Response[0] == 'y') || (Response[0] == 'Y');
+	
 }
