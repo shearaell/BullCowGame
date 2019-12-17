@@ -1,7 +1,7 @@
 #pragma once
-#include<string>
+#include <string>
 
-class FBullCowsGame {
+class FBullCowGame {
 public:
 	void Reset(); // to do make a more rich value.
 	int GetMaxTries();
