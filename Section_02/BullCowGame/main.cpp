@@ -39,7 +39,7 @@ void PlayGame()
 {
 	BCGame.Reset();
 	int32 MaxTries = BCGame.GetMaxTries();
-	std::cout << MaxTries << std::endl;
+	//std::cout << MaxTries << std::endl;
 
 	// loop for the number of turns asking for guesses, change to while loop
 	for (int32 count = 1; count <= MaxTries; count++)
@@ -51,7 +51,7 @@ void PlayGame()
 
 
 		//TODO submit valid guess to the game and receive counts
-		FBullCowCount BullCowCount = BCGame.SubmitGuess(Guess);
+		FBullCowCount BullCowCount = BCGame.SubmitValidGuess(Guess);
 
 		std::cout << "Bulls= " << BullCowCount.Bulls;
 		std::cout << " Cows= " << BullCowCount.Cows;
@@ -76,12 +76,12 @@ void PrintIntro()
 //loop continue until get right guess
 FText GetValidGuess()
 {
+	FText Guess = "";
 	EGuessStatus Status = EGuessStatus::Invalid_Status;
 	do {
 		//get the guess from the player
 		int32 MyCurrentTry = BCGame.GetCurrentTry();
 		std::cout << "Try " << MyCurrentTry << ". Enter your guess: ";
-		FText Guess = "";
 		std::getline(std::cin, Guess);
 
 		EGuessStatus Status = BCGame.CheckGuessValidity(Guess);
@@ -97,10 +97,11 @@ FText GetValidGuess()
 			std::cout << "Please enter a word without repeating letters. \n";
 			break;
 		default:
-			return Guess;
+			break; //assuming the gues is valid
 		}
 		std::cout << std::endl;
 	} while (Status != EGuessStatus::OK ); //kepp looping until no errors
+	return Guess;
 }
 
 bool AskToPlayAgain()

@@ -33,7 +33,7 @@ public:
 	EGuessStatus CheckGuessValidity(FString) const;
 
 	//counts bulls and cows; and increases try # assuming valid guess
-	FBullCowCount SubmitGuess(FString);
+	FBullCowCount SubmitValidGuess(FString);
 
 //please try ingnore and focus on int32erface above 
 private:
