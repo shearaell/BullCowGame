@@ -46,6 +46,9 @@ void PlayGame()
 	{
 		FText Guess = GetGuess(); // TODO make check for valid guesses
 		
+
+		EGuessStatus Status = BCGame.CheckGuessValidity(Guess);
+
 		//TODO submit valid guess to the game and receive counts
 		FBullCowCount BullCowCount = BCGame.SubmitGuess(Guess);
 		//Print number of bulls and cows
@@ -71,7 +74,7 @@ void PrintIntro()
 	return;
 }
 
-FText GetGuess() 
+FText GetGuess() //Change to get validGuess
 {
 	int32 MyCurrentTry = BCGame.GetCurrentTry();
 
