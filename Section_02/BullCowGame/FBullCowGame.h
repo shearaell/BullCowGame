@@ -12,10 +12,12 @@ struct FBullCowCount
 
 enum class EGuessStatus 
 {
+	Invalid_Status,
 	OK, 
 	Not_Isogram,
 	Not_Lowercase,
 	Wrong_Length
+	
 };
 
 class FBullCowGame {
