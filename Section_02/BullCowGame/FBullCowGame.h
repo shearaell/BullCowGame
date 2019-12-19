@@ -17,8 +17,9 @@ public:
 	void Reset(); // to do make a more rich value.
 	int32 GetMaxTries() const;
 	int32 GetCurrentTry() const;
+	int32 GetHiddenWordLength() const;
 	bool IsGameWon() const;
-	bool CheckGuessValidity(FString); // to make more rich return value
+	bool CheckGuessValidity(FString) const; // to make more rich return value
 	//counts bulls and cows; and increases try # assuming valid guess
 	FBullCowCount SubmitGuess(FString);
 
