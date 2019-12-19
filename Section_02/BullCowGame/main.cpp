@@ -28,6 +28,7 @@ int main()
 
 void PlayGame()
 {
+	BCGame.Reset();
 	int MaxTries = BCGame.GetMaxTries();
 	std::cout << MaxTries << std::endl;
 
@@ -55,7 +56,7 @@ void PrintIntro()
 
 std::string GetGuess() 
 {
-	int MyCurrentTry = BCGame.GentCurrentTry();
+	int MyCurrentTry = BCGame.GetCurrentTry();
 
 	//get the guess from the player
 	std::cout << "Try " << MyCurrentTry <<". Enter your guess: ";
