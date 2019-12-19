@@ -4,7 +4,7 @@
 using FString = std::string;
 using int32 = int;
 
-struct BullCowCount
+struct FBullCowCount
 {
 	int32 Bulls = 0;
 	int32 Cows = 0;
@@ -20,7 +20,7 @@ public:
 	bool IsGameWon() const;
 	bool CheckGuessValidity(FString); // to make more rich return value
 	//counts bulls and cows; and increases try # assuming valid guess
-	BullCowCount SubmitGuess(FString);
+	FBullCowCount SubmitGuess(FString);
 
 //please try ingnore and focus on int32erface above 
 private:
