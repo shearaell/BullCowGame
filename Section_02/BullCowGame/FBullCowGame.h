@@ -11,7 +11,7 @@ public:
 
 //please try ingnore and focus on interface above 
 private:
-	int MyCurrentTry;
-	int MyMaxTries;
+	int MyCurrentTry = 1;
+	int MyMaxTries = 5;
 	bool IsIsogram(std::string);
 };
