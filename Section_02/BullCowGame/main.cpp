@@ -41,8 +41,9 @@ void PlayGame()
 	int32 MaxTries = BCGame.GetMaxTries();
 	//std::cout << MaxTries << std::endl;
 
-	// loop for the number of turns asking for guesses, change to while loop
-	for (int32 count = 1; count <= MaxTries; count++)
+	// loop aking for guesses while game is still not won
+	// and there are still tries remaining
+	while (!BCGame.IsGameWon() && BCGame.GetCurrentTry() <= MaxTries)
 	{
 		FText Guess = GetValidGuess(); // TODO make check for valid guesses
 		
@@ -66,7 +67,7 @@ void PlayGame()
 void PrintIntro()
 {
 
-	std::cout << "Welcome to Bulls and Cows, a fun word game.\n";
+	std::cout << "\n\nWelcome to Bulls and Cows, a fun word game.\n";
 	std::cout << "Can you guess the " << BCGame.GetHiddenWordLength();
 	std::cout << " letter isogram I'm thinking of?\n";
 	std::cout << std::endl;
@@ -84,7 +85,7 @@ FText GetValidGuess()
 		std::cout << "Try " << MyCurrentTry << ". Enter your guess: ";
 		std::getline(std::cin, Guess);
 
-		EGuessStatus Status = BCGame.CheckGuessValidity(Guess);
+		Status = BCGame.CheckGuessValidity(Guess);
 		switch (Status)
 		{
 		case EGuessStatus::Wrong_Length:
@@ -97,12 +98,14 @@ FText GetValidGuess()
 			std::cout << "Please enter a word without repeating letters. \n";
 			break;
 		default:
-			break; //assuming the gues is valid
+			break;
 		}
 		std::cout << std::endl;
 	} while (Status != EGuessStatus::OK ); //kepp looping until no errors
 	return Guess;
 }
+
+
 
 bool AskToPlayAgain()
 {
