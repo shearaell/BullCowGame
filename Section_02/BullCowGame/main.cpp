@@ -69,7 +69,16 @@ void PlayGame()
 void PrintIntro()
 {
 
-	std::cout << "\n\nWelcome to Bulls and Cows, a fun word game.\n";
+	std::cout << "\nWelcome to Bulls and Cows, a fun word game.\n";
+	std::cout << "Can you guess the " << BCGame.GetHiddenWordLength();
+	std::cout << " letter isogram I'm thinking of?\n";
+	std::cout << std::endl;
+	std::cout << "          }   {         ___ " << std::endl;
+	std::cout << "          (o o)        (o o) " << std::endl;
+	std::cout << "   /-------\\ /          \\ /-------\\ " << std::endl;
+	std::cout << "  / | BULL |O            O| COW  | \\ " << std::endl;
+	std::cout << " *  |-,--- |              |------|  * " << std::endl;
+	std::cout << "    ^      ^              ^      ^ " << std::endl;
 	std::cout << "Can you guess the " << BCGame.GetHiddenWordLength();
 	std::cout << " letter isogram I'm thinking of?\n";
 	std::cout << std::endl;
@@ -84,25 +93,26 @@ FText GetValidGuess()
 	do {
 		//get the guess from the player
 		int32 MyCurrentTry = BCGame.GetCurrentTry();
-		std::cout << "Try " << MyCurrentTry << ". Enter your guess: ";
+		std::cout << "Try " << MyCurrentTry << " of " << BCGame.GetMaxTries();
+		std::cout << " .Enter your guess : ";
 		std::getline(std::cin, Guess);
 
 		Status = BCGame.CheckGuessValidity(Guess);
 		switch (Status)
 		{
 		case EGuessStatus::Wrong_Length:
-			std::cout << "Please enter a " << BCGame.GetHiddenWordLength() << " letter word. \n";
+			std::cout << "Please enter a " << BCGame.GetHiddenWordLength() << " letter word.\n \n";
 			break;
 		case EGuessStatus::Not_Lowercase:
-			std::cout << "Please enter all lower caseletters. \n";
+			std::cout << "Please enter all lower caseletters. \n\n";
 			break;
 		case EGuessStatus::Not_Isogram:
-			std::cout << "Please enter a word without repeating letters. \n";
+			std::cout << "Please enter a word without repeating letters.\n \n";
 			break;
 		default:
 			break;
 		}
-		std::cout << std::endl;
+		//std::cout << std::endl;
 	} while (Status != EGuessStatus::OK ); //kepp looping until no errors
 	return Guess;
 }
