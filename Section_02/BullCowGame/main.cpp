@@ -94,7 +94,7 @@ FText GetValidGuess()
 		//get the guess from the player
 		int32 MyCurrentTry = BCGame.GetCurrentTry();
 		std::cout << "Try " << MyCurrentTry << " of " << BCGame.GetMaxTries();
-		std::cout << " .Enter your guess : ";
+		std::cout << ". Enter your guess : ";
 		std::getline(std::cin, Guess);
 
 		Status = BCGame.CheckGuessValidity(Guess);
