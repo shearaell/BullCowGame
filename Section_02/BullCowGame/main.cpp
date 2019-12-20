@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 This is console executable, that makes use of the BullCow class
 This acts as the view in a MVC pattern, and is responsible for all
@@ -17,11 +19,8 @@ FText GetValidGuess();
 bool AskToPlayAgain();
 void PrintGameSummary();
 
-FBullCowGame BCGame; //instantiate new game
+FBullCowGame BCGame;
 
-
-
-//the entry point for our application
 int main()
 {
 	bool bPlayAgain = false;
@@ -40,19 +39,10 @@ void PlayGame()
 {
 	BCGame.Reset();
 	int32 MaxTries = BCGame.GetMaxTries();
-	//std::cout << MaxTries << std::endl;
-
-	// loop aking for guesses while game is still not won
-	// and there are still tries remaining
+	
 	while (!BCGame.IsGameWon() && BCGame.GetCurrentTry() <= MaxTries)
 	{
-		FText Guess = GetValidGuess(); // TODO make check for valid guesses
-		
-
-
-
-
-		//TODO submit valid guess to the game and receive counts
+		FText Guess = GetValidGuess();
 		FBullCowCount BullCowCount = BCGame.SubmitValidGuess(Guess);
 
 		std::cout << "Bulls= " << BullCowCount.Bulls;
@@ -64,8 +54,6 @@ void PlayGame()
 	PrintGameSummary();
 	return;
 }
-
-//introduce the game
 void PrintIntro()
 {
 
@@ -85,13 +73,11 @@ void PrintIntro()
 	return;
 }
 
-//loop continue until get right guess
 FText GetValidGuess()
 {
 	FText Guess = "";
 	EGuessStatus Status = EGuessStatus::Invalid_Status;
 	do {
-		//get the guess from the player
 		int32 MyCurrentTry = BCGame.GetCurrentTry();
 		std::cout << "Try " << MyCurrentTry << " of " << BCGame.GetMaxTries();
 		std::cout << ". Enter your guess : ";
@@ -112,8 +98,7 @@ FText GetValidGuess()
 		default:
 			break;
 		}
-		//std::cout << std::endl;
-	} while (Status != EGuessStatus::OK ); //kepp looping until no errors
+	} while (Status != EGuessStatus::OK );
 	return Guess;
 }
 

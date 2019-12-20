@@ -1,3 +1,6 @@
+/* The game logic (no view code or direct user interaction)
+The game is a simple guess the word game based on Mastermind
+*/
 #pragma once
 #include <string>
 
@@ -22,9 +25,9 @@ enum class EGuessStatus
 
 class FBullCowGame {
 public:
-	FBullCowGame(); //constructor
+	FBullCowGame();
 
-	void Reset(); // to do make a more rich value.
+	void Reset();
 	int32 GetMaxTries() const;
 	int32 GetCurrentTry() const;
 	int32 GetHiddenWordLength() const;
@@ -32,12 +35,9 @@ public:
 
 	EGuessStatus CheckGuessValidity(FString) const;
 
-	//counts bulls and cows; and increases try # assuming valid guess
 	FBullCowCount SubmitValidGuess(FString);
 
-//please try ingnore and focus on int32erface above 
 private:
-	//see constructor for initialiation
 	int32 MyCurrentTry;
 	int32 MyMaxTries;
 	FString MyHiddenWord;
